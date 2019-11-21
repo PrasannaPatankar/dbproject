@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[DirectCostLineItems] (
+    [Id]               INT             IDENTITY (1, 1) NOT NULL,
+    [CostCodeId]       INT             NOT NULL,
+    [CostTypeId]       INT             NOT NULL,
+    [Description]      NVARCHAR (50)   NULL,
+    [IsAutomatic]      BIT             NOT NULL,
+    [Quantity]         INT             NULL,
+    [Units]            NVARCHAR (50)   NULL,
+    [PerUnitCost]      INT             NULL,
+    [SubTotal]         DECIMAL (18, 2) NOT NULL,
+    [DirectCostId]     INT             NOT NULL,
+    [ProjectId]        INT             NOT NULL,
+    [BudgetLineItemId] INT             NOT NULL,
+    [CreatedDate]      DATETIME        NULL,
+    [CreatedByUserId]  INT             NULL,
+    [IsDeleted]        BIT             NULL,
+    CONSTRAINT [PK_DirectCostLineItems] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_DirectCostLineItems_BudgetLineItem] FOREIGN KEY ([BudgetLineItemId]) REFERENCES [dbo].[BudgetLineItem] ([Id]),
+    CONSTRAINT [FK_DirectCostLineItems_CostCodes] FOREIGN KEY ([CostCodeId]) REFERENCES [dbo].[CostCodes] ([Id]),
+    CONSTRAINT [FK_DirectCostLineItems_CostTypes] FOREIGN KEY ([CostTypeId]) REFERENCES [dbo].[CostTypes] ([Id]),
+    CONSTRAINT [FK_DirectCostLineItems_DirectCosts] FOREIGN KEY ([DirectCostId]) REFERENCES [dbo].[DirectCosts] ([Id]),
+    CONSTRAINT [FK_DirectCostLineItems_Project] FOREIGN KEY ([ProjectId]) REFERENCES [dbo].[Project] ([Id]),
+    CONSTRAINT [FK_DirectCostLineItems_Users] FOREIGN KEY ([CreatedByUserId]) REFERENCES [dbo].[Users] ([Id])
+);
+

@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[ChangeOrders] (
+    [Id]                               INT             IDENTITY (1, 1) NOT NULL,
+    [ChangeOrderNumber]                INT             NOT NULL,
+    [CreatedDate]                      DATETIME        NOT NULL,
+    [CreatedByUserId]                  INT             NOT NULL,
+    [ContractCompanyId]                INT             NOT NULL,
+    [ContractId]                       INT             NOT NULL,
+    [Title]                            NVARCHAR (50)   NULL,
+    [Status]                           INT             NOT NULL,
+    [ChangeReasonId]                   INT             NOT NULL,
+    [DueDate]                          DATETIME        NULL,
+    [InvoicedDate]                     DATETIME        NULL,
+    [PaidDate]                         DATETIME        NULL,
+    [Description]                      TEXT            NULL,
+    [TotalAmount]                      DECIMAL (18, 2) NOT NULL,
+    [DesignatedReviewerUserId]         INT             NULL,
+    [RequestReceivedFromUserId]        INT             NULL,
+    [RevisedSubstantialCompletionDate] DATETIME        NULL,
+    [SigendChangeOrderReceivedDate]    DATETIME        NULL,
+    [IsDeleted]                        BIT             NULL,
+    CONSTRAINT [PK_ChangeOrders] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_ChangeOrders_ChangeReasons] FOREIGN KEY ([ChangeReasonId]) REFERENCES [dbo].[ChangeReasons] ([Id]),
+    CONSTRAINT [FK_ChangeOrders_Client] FOREIGN KEY ([ContractCompanyId]) REFERENCES [dbo].[Client] ([Id]),
+    CONSTRAINT [FK_ChangeOrders_Contracts] FOREIGN KEY ([ContractId]) REFERENCES [dbo].[Contracts] ([Id]),
+    CONSTRAINT [FK_ChangeOrders_Users] FOREIGN KEY ([CreatedByUserId]) REFERENCES [dbo].[Users] ([Id])
+);
+

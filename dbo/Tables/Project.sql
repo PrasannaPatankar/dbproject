@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[Project] (
+    [Id]                      INT             IDENTITY (1, 1) NOT NULL,
+    [Name]                    NVARCHAR (50)   NULL,
+    [CampusId]                INT             NOT NULL,
+    [IsActive]                BIT             NULL,
+    [Description]             NVARCHAR (50)   NULL,
+    [EstimatedStartDate]      DATETIME        NULL,
+    [Category]                NVARCHAR (50)   NULL,
+    [EstimatedCompletionDate] DATETIME        NULL,
+    [ProjectType]             INT             NULL,
+    [ProjectStage]            INT             NULL,
+    [EstimatedProjectValue]   DECIMAL (18, 2) NULL,
+    [ProjectFlag]             INT             NULL,
+    [OwnerType]               INT             NULL,
+    [ProjectGroupId]          INT             NULL,
+    [WarrantyStartDate]       DATETIME        NULL,
+    [WarrantyEndDate]         DATETIME        NULL,
+    [CreatedDate]             DATETIME        NULL,
+    [CreatedByUserId]         INT             NULL,
+    [IsDeleted]               BIT             NULL,
+    CONSTRAINT [PK_Project] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_Project_Campus] FOREIGN KEY ([CampusId]) REFERENCES [dbo].[Campus] ([Id]),
+    CONSTRAINT [FK_Project_ProjectGroup] FOREIGN KEY ([ProjectGroupId]) REFERENCES [dbo].[ProjectGroup] ([Id]),
+    CONSTRAINT [FK_Project_Users] FOREIGN KEY ([CreatedByUserId]) REFERENCES [dbo].[Users] ([Id])
+);
+
