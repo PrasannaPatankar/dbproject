@@ -1,0 +1,5 @@
+REM "Path to your SQL Server...\DAC\bin\sqlpackage.exe" /action:Publish /sourceFile:"<Complete Source Path to the .dacpac file located in Bin/Debug>" /targetconnectionstring:"<Target Database Connection string>"
+
+REM "C:\Program Files (x86)\Microsoft SQL Server\140\DAC\bin\SqlPackage.exe" /action:Publish /sourceFile:".\bin\Debug\NewPrompt-SSDT.dacpac" /targetconnectionstring:"Server=tcp:prompt-mci.database.windows.net,1433;Initial Catalog=NewPrompt;Persist Security Info=False;User ID=mci-prompt;Password=proVolon3!2018;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+
+"C:\Program Files (x86)\Microsoft SQL Server\140\DAC\bin\SqlPackage.exe" /action:Publish /sourceFile:".\bin\Debug\NewPrompt-SSDT.dacpac" /targetconnectionstring:"Server=IDTP334;Initial Catalog=NewPrompt;User ID=sa;Password=synerzip;"
